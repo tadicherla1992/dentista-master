@@ -10506,6 +10506,7 @@ body {
   line-height: 1.8;
   font-weight: 400;
   color: rgba(0, 0, 0, 0.6);
+  scroll-behavior: smooth;
 }
 body.menu-show {
   overflow: hidden;
@@ -10513,7 +10514,45 @@ body.menu-show {
   height: 100%;
   width: 100%;
 }
+.topBtn {
+  position: fixed;
+  bottom: 10px;
+  right: 10px;
+  z-index: 999;
+  animation: T 5s linear infinite;
+  border-radius: 100%;
+  cursor: pointer;
+}
 
+body {
+  scroll-behavior: smooth;
+}
+/*top btn css*/
+.topBtn .Tbtn {
+  font-size: 30px;
+  padding: 8px;
+  background-color: #46b7de;
+  color: white;
+  border-radius: 100%;
+  box-shadow: 0 2px 5px black, 2px 4px 4px #46b7de;
+  transition: 0.5s all;
+}
+
+.topBtn:hover .Tbtn {
+  background-color: white;
+  color: #46b7de;
+}
+
+@keyframes T {
+  0%,
+  100% {
+    transform: scale(1.1);
+  }
+
+  50% {
+    transform: scale(1);
+  }
+}
 a {
   -webkit-transition: 0.3s all ease;
   -o-transition: 0.3s all ease;
@@ -11686,7 +11725,8 @@ textarea.form-control {
 .ftco-footer {
   font-size: 14px;
   background: #46b7de;
-  padding: 6em 0;
+  padding-top: 6em;
+  padding-bottom: 1em;
 }
 .ftco-footer .ftco-footer-widget {
   width: 100%;
@@ -12614,7 +12654,13 @@ textarea.form-control {
 
 #ftco-loader {
   position: fixed;
-  width: 96px;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  visibility: hidden;
+  /* width: 96px;
   height: 96px;
   left: 50%;
   top: 50%;
@@ -12626,10 +12672,10 @@ textarea.form-control {
   box-shadow: 0px 24px 64px rgba(0, 0, 0, 0.24);
   border-radius: 16px;
   opacity: 0;
-  visibility: hidden;
+  
   -webkit-transition: opacity 0.2s ease-out, visibility 0s linear 0.2s;
   -o-transition: opacity 0.2s ease-out, visibility 0s linear 0.2s;
-  transition: opacity 0.2s ease-out, visibility 0s linear 0.2s;
+  transition: opacity 0.2s ease-out, visibility 0s linear 0.2s;*/
   z-index: 1000;
 }
 
@@ -12655,8 +12701,32 @@ textarea.form-control {
   visibility: visible;
   opacity: 1;
 }
-
-#ftco-loader .circular {
+/* HTML: <div class="loader"></div> */
+.loader {
+  width: 15px;
+  aspect-ratio: 1;
+  border-radius: 50%;
+  animation: l5 1s infinite linear alternate;
+}
+@keyframes l5 {
+  0% {
+    box-shadow: 20px 0 #46b7de, -20px 0 #0002;
+    background: #46b7de;
+  }
+  33% {
+    box-shadow: 20px 0 #46b7de, -20px 0 #0002;
+    background: #0002;
+  }
+  66% {
+    box-shadow: 20px 0 #0002, -20px 0 #46b7de;
+    background: #0002;
+  }
+  100% {
+    box-shadow: 20px 0 #0002, -20px 0 #46b7de;
+    background: #46b7de;
+  }
+}
+/* #ftco-loader .circular {
   -webkit-animation: loader-rotate 2s linear infinite;
   animation: loader-rotate 2s linear infinite;
   position: absolute;
@@ -12718,4 +12788,4 @@ textarea.form-control {
     stroke-dasharray: 89, 200;
     stroke-dashoffset: -136px;
   }
-}
+} */
